@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+
+{% block content %}
+<div class="d-flex justify-content-center mt-5">
+	<form action="/register_attempt" method="post">
+		<h2>Register</h2>
+		{% with messages = get_flashed_messages(category_filter=['register']) %}
+			{% if messages %}
+				<div class="alert alert-danger" role="alert">
+					<strong>Error!</strong>
+					{% for message in messages %}
+						<p>{{ message }}</p>
+					{% endfor %}
+				</div>
+			{% endif %}
+		{% endwith %}
+		<div class="form-group">
+			<label for="first_name">First Name:</label>
+			<input type="text" name="first_name" class="form-control col-15">
+		</div>
+		<div class="form-group">
+			<label for="last_name">Last Name:</label>
+			<input type="text" name="last_name" class="form-control col-15">
+		</div>
+		<div class="form-group">
+			<label for="email">Email:</label>
+			<input type="text" name="email" class="form-control col-15">
+		</div>
+		<div class="form-group">
+			<label for="password">Password:</label>
+			<input type="password" name="password" class="form-control col-15">
+		</div>
+		<div class="form-group">
+			<label for="confirm_password">Confirm Password:</label>
+			<input type="password" name="confirm_password" class="form-control col-15">
+		</div>
+		<input type="submit" value="Register" class="btn btn-success">
+	</form>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+	<p>Forgot you actually had an account? <a href="/login_page">Click here dummy</a>.</p>
+</div>
+{% endblock %}

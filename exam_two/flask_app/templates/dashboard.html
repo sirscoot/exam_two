@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+
+{% block content %}
+<div class="d-flex justify-content-around">
+	<h2>Hello {{ user.first_name }} {{ user.last_name }}</h2>
+</div>
+
+
+<div class="container mt-5">
+	<h2>All TV Shows</h2>
+	<a href="/create">+ Create</a> |
+	<a href="/logout">Logout</a>
+	<table class="table table-hover table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Title</th>
+				<th scope="col">Network</th>
+				<th scope="col">Release Date</th>
+				<th scope="col">Likes</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody class="table-group-divider">
+			{% for show in shows %}
+				<!-- compares the id of the show and the id of the user. joins them by association -->
+				<tr>
+					{% if show.user_id == user.id %}
+					<td>{{ show.title }}</td>
+					<td>{{ show.network }}</td>
+					<td>{{ show.release_date.strftime('%B %Y') }}</td>
+					<td>{{ show.likes }}</td>
+					<td><a href="/show/{{ show.id }}">Show</a> | <a href="/edit/{{ show.id }}">Edit</a> | <a href="/delete/{{ show.id }}">Delete</a></td>
+					{% endif %}
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+	
+{% endblock %}

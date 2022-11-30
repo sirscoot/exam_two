@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Show{% endblock %}
+
+
+{% block content %}
+<div class="d-flex justify-content-center">
+	<h2>Edit Show!</h2>
+</div>
+<div class="d-flex justify-content-center">
+	{% for edit in edits %}
+	<form action="/save_edit/{{ edit.id }}" method="post" class="">
+		<div class="form-group">
+			<label for="title">Title:</label>
+			<input type="text" name="title" value="{{ edit.title }}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="network">Network:</label>
+			<input type="text" name="network" value="{{ edit.network }}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="release_date">Release Date:</label>
+			<input type="date" name="release_date" value="{{ edit.release_date }}" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="description">Description:</label>
+			<textarea type="text" name="description" value="{{ edit.description }}" class="form-control"></textarea>
+		</div>
+
+		<input type="hidden" name="user_id" value="{{ session['user_id'] }}">
+
+		<input type="submit" value="Update" class="btn btn-success">
+	</form>
+	{% endfor %}
+</div>
+{% endblock %}

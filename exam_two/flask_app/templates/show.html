@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}View Show{% endblock %}
+
+
+{% block content %}
+
+
+<div class="d-flex justify-content-center mt-5">
+	<div class="card" style="width: 30rem;">
+	  <div class="card-body">
+	    {% for show in shows %}
+    	<h5 class="card-title">Show: {{ show.title }}</h5>
+	    <h6 class="card-subtitle mb-2 text-muted">First Aired: {{ show.release_date.strftime('%B %Y') }}</h6>
+	    <p class="card-text">Description: {{ show.description }}</p>
+	    <p class="card-text">Posted By: {{ show.creator.first_name }} {{ show.creator.last_name }}</p> 
+	    {% endfor %}
+	    <a href="/dashboard" class="card-link">TV Shows</a>
+	    <a href="/logout" class="card-link">Logout</a>
+	  </div>
+	</div>
+</div>
+
+
+{% endblock %}

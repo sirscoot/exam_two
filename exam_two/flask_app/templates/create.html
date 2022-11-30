@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Show{% endblock %}
+
+
+{% block content %}
+<div class="container d-flex justify-content-center">
+	<h2>Add a new show!</h2>
+</div>
+
+<div class="container d-flex justify-content-center">
+	<a href="/dashboard" style="margin-right: 5px;">Home</a> |
+	<a href="/logout" style="margin-left: 5px">Logout</a>
+</div>
+
+<div class="d-flex justify-content-center">
+	<form action="/add_show" method="post" class="">
+		<div class="form-group">
+			<label for="title">Title:</label>
+			<input type="text" name="title" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="network">Network:</label>
+			<input type="text" name="network" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="release_date">Release Date:</label>
+			<input type="date" name="release_date" class="form-control">
+		</div>
+		<div class="form-group">
+			<label for="description">Description:</label>
+			<textarea type="text" name="description" class="form-control"></textarea>
+		</div>
+
+		<input type="hidden" name="user_id" value="{{ session['user_id'] }}">
+
+		<input type="submit" value="Add Show" class="btn btn-success">
+	</form>
+</div>
+{% endblock %}

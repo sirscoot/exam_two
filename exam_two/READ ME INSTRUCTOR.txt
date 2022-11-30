@@ -1,0 +1,6 @@
+
+1. Validator isn't working properly
+2. Cannot get the joins to work for displaying the shows associated with the user
+example: "one_show.creator_title" does not display the title. I could get this in a pseudo working condition by creating a get all method. This is not the way it should be done per exam, but it's the closest I could get as of right now. I even wrote the code out for joining the two tables together, but for some reason, it still doesn't want to display the information.
+
+THIS IS SLOWLY TURNING INTO SPAGHETTI AND IM STARTING HATE MYSELF. HELP ME.
